@@ -1,9 +1,8 @@
 """
 validation_agent.py — Validation Agent for CampusAI Lite
 
-Uses CrewAI for agent/role definition.
+Uses CrewAI Agent + Task + Crew.kickoff() for genuine CrewAI execution.
 Checks the draft answer against source data and produces a ValidationVerdict.
-Triggers a retry if the answer is invalid (up to MAX_RETRIES times).
 """
 
 from __future__ import annotations
@@ -11,7 +10,7 @@ from __future__ import annotations
 import json
 import re
 
-from crewai import Agent
+from crewai import Agent, Task, Crew
 from langchain_core.messages import SystemMessage
 
 from src.config import get_llm, with_retry, VERBOSE
@@ -23,6 +22,15 @@ FALLBACK_MESSAGE = (
     "I'm sorry, I don't have reliable information to answer your question accurately. "
     "Please contact the university helpdesk or visit the relevant department office for assistance."
 )
+
+
+# ── CrewAI LLM string ────────────────────────────────────────────────────
+def _crewai_llm_str() -> str:
+    import os
+    model = os.getenv("LLM_MODEL", "gemini-2.5-flash")
+    if not model.startswith("gemini/"):
+        model = f"gemini/{model}"
+    return model
 
 
 # ── CrewAI Agent definition ────────────────────────────────────────────────
@@ -41,95 +49,96 @@ def make_validation_crewai_agent() -> Agent:
             "in draft answers before they reach students. You are thorough, fair, and "
             "never approve answers that contain information not found in the source data."
         ),
+        llm=_crewai_llm_str(),
         verbose=VERBOSE,
         allow_delegation=False,
     )
 
 
-# ── LangChain prompt ───────────────────────────────────────────────────────
-_VALIDATION_SYSTEM = """You are the Validation Agent for CampusAI University's AI assistant.
-
-Your job is to check whether a draft answer is:
-1. Factually grounded in the provided source records (no hallucinated numbers, dates, names)
-2. Directly answering the student's original question
-3. Not adding information that is absent from the source records
-
-You MUST respond with ONLY a valid JSON object matching this schema:
-{{
+# ── Verdict schema description (embedded in Task) ─────────────────────────
+_VERDICT_SCHEMA = """{
   "is_valid": <true or false>,
   "reason": "<explanation of your verdict>",
-  "final_answer": "<the final answer text to send to the student — if valid, use the draft (lightly edited if needed); if invalid, write an appropriate correction or fallback>",
+  "final_answer": "<the final answer to send to student>",
   "confidence": <0.0 to 1.0>,
-  "issues_found": ["<issue 1>", "<issue 2>"] (empty list if valid)
-}}
+  "issues_found": ["<issue>"] or []
+}"""
 
+_VAL_PREFIX = """You are the Validation Agent for CampusAI University's AI assistant.
+Check whether the draft answer is factually grounded in the source records.
 Validation rules:
-- If the draft correctly uses information from the source records, mark it VALID.
-- If the draft states specific facts (numbers, dates, names) NOT found in the source records, mark INVALID and list issues.
-- If source records are empty/missing and the draft appropriately says so, mark VALID.
-- If source records are empty and the draft fabricates an answer, mark INVALID.
-- Minor rephrasing, formatting changes, and adding "please contact X" are acceptable.
-
-Student's original query: {original_query}
-
-Source records retrieved from database:
-{records}
-
-Draft answer to validate:
-{draft_answer}
-
-Respond with ONLY the JSON object:"""
+- Mark VALID if the draft correctly uses information from source records.
+- Mark INVALID if the draft states facts NOT in source records.
+- If records are empty and draft says so, mark VALID.
+- If records are empty and draft fabricates an answer, mark INVALID."""
 
 
-# ── Core validation function ───────────────────────────────────────────────
-
-# Split the template to avoid .format() choking on JSON braces in records_str
-_VAL_PREFIX = _VALIDATION_SYSTEM.split("Student's original query:")[0].strip()
-
-
-@with_retry(max_attempts=3, delay_seconds=5.0)
-def _call_validation_llm(original_query: str, records_str: str, draft_answer: str) -> str:
-    """Call the LLM to validate the draft."""
-    from langchain_core.messages import HumanMessage
-    llm = get_llm(temperature=0.1)
-    # Gemini requires a non-empty HumanMessage — send system context + user turn separately
-    human_content = (
-        "Student's original query: "
-        + original_query
-        + "\n\nSource records retrieved from database:\n"
-        + records_str
-        + "\n\nDraft answer to validate:\n"
-        + draft_answer
-        + "\n\nRespond with ONLY the JSON object:"
-    )
-    response = llm.invoke([
-        SystemMessage(content=_VAL_PREFIX),
-        HumanMessage(content=human_content),
-    ])
-    return response.content if hasattr(response, "content") else str(response)
-
-
+# ── Response parser ────────────────────────────────────────────────────────
 def _parse_validation_response(raw: str, draft_answer: str) -> ValidationVerdict:
-    """Parse LLM response into ValidationVerdict, with fallback defaults."""
-    raw = raw.strip()
-    raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.MULTILINE)
-    raw = re.sub(r"\s*```$", "", raw, flags=re.MULTILINE)
-    raw = raw.strip()
+    """Parse raw text (from CrewAI or LLM) into ValidationVerdict."""
+    text = raw.strip()
+    text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.MULTILINE)
+    text = re.sub(r"\s*```$", "", text, flags=re.MULTILINE)
+    text = text.strip()
+
+    # Try to extract a JSON object from anywhere in the text
+    json_match = re.search(r"\{[\s\S]*\}", text)
+    if json_match:
+        text = json_match.group(0)
 
     try:
-        data = json.loads(raw)
+        data = json.loads(text)
         return ValidationVerdict(**data)
     except Exception as e:
         if VERBOSE:
             print(f"[validation] JSON parse failed: {e}. Raw: {raw[:300]}")
-        # Fallback: accept the draft as-is (conservative)
+        # Fallback: accept draft as-is (conservative)
         return ValidationVerdict(
             is_valid=True,
-            reason=f"Validation LLM parse error ({e}); accepting draft as-is.",
+            reason=f"Parse error ({e}); accepting draft as-is.",
             final_answer=draft_answer,
             confidence=0.5,
             issues_found=[],
         )
+
+
+# ── CrewAI execution path ─────────────────────────────────────────────────
+@with_retry(max_attempts=3, delay_seconds=5.0)
+def _run_via_crewai(original_query: str, records_str: str, draft_answer: str) -> str:
+    """
+    Run the Validation Agent through CrewAI Task + Crew.kickoff().
+    This is the genuine CrewAI execution path.
+    """
+    agent = make_validation_crewai_agent()
+
+    task_description = (
+        f"{_VAL_PREFIX}\n\n"
+        f"Student's original query: {original_query}\n\n"
+        f"Source records retrieved from database:\n{records_str}\n\n"
+        f"Draft answer to validate:\n{draft_answer}\n\n"
+        f"Respond with ONLY a valid JSON object matching this schema:\n{_VERDICT_SCHEMA}"
+    )
+
+    task = Task(
+        description=task_description,
+        expected_output=(
+            "A JSON object with keys: is_valid (bool), reason (str), "
+            "final_answer (str), confidence (float 0-1), issues_found (list of str)."
+        ),
+        agent=agent,
+    )
+
+    crew = Crew(
+        agents=[agent],
+        tasks=[task],
+        verbose=VERBOSE,
+    )
+
+    result = crew.kickoff()
+
+    if hasattr(result, "raw"):
+        return str(result.raw)
+    return str(result)
 
 
 def run_validation_agent(
@@ -138,7 +147,7 @@ def run_validation_agent(
     sources: list[dict],
 ) -> ValidationVerdict:
     """
-    Run the Validation Agent to check a draft answer against source records.
+    Run the Validation Agent via CrewAI Crew.kickoff().
 
     Args:
         original_query: The user's original question.
@@ -150,18 +159,18 @@ def run_validation_agent(
     """
     if VERBOSE:
         print(f"\n[validation] Validating draft for query: {original_query}")
-        print(f"[validation] Draft: {draft_answer[:200]}...")
+        print(f"[validation] Draft (first 200): {draft_answer[:200]}")
 
     records_str = json.dumps(sources, indent=2, ensure_ascii=False) if sources else "[]"
 
-    raw = _call_validation_llm(
+    raw = _run_via_crewai(
         original_query=original_query,
         records_str=records_str,
         draft_answer=draft_answer,
     )
 
     if VERBOSE:
-        print(f"[validation] LLM raw response:\n{raw}")
+        print(f"[validation] CrewAI raw output:\n{raw[:300]}")
 
     verdict = _parse_validation_response(raw, draft_answer)
 

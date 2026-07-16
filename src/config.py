@@ -18,6 +18,11 @@ GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
 LLM_MODEL: str = os.getenv("LLM_MODEL", "gemini-2.5-flash")
 VERBOSE: bool = os.getenv("VERBOSE", "false").lower() == "true"
 
+# LiteLLM (used internally by CrewAI) reads GEMINI_API_KEY for "gemini/*" models.
+# Mirror GOOGLE_API_KEY -> GEMINI_API_KEY so users only need to set one key.
+if GOOGLE_API_KEY and not os.getenv("GEMINI_API_KEY"):
+    os.environ["GEMINI_API_KEY"] = GOOGLE_API_KEY
+
 
 def get_llm(temperature: float = 0.2) -> ChatGoogleGenerativeAI:
     """Return a LangChain-wrapped Gemini LLM instance."""

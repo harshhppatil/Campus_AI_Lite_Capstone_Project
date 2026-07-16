@@ -53,16 +53,38 @@ This file records architectural and implementation decisions made during the bui
 
 ---
 
-## D-006: PydanticAI integration pattern
+## D-006: PydanticAI integration pattern (AMENDED)
 
-**Decision**: PydanticAI models are used as structured I/O schemas between agents. LLM outputs are parsed/validated via PydanticAI's `TypeAdapter` / model validators. Full `Agent[Deps, OutputType]` typed-agent wrappers are used where supported.
+**Decision**: A genuine `pydantic_ai.Agent(model=GoogleModel(...), output_type=PlannerOutput)` is used in the Planner Agent pipeline. PydanticAI enforces the `PlannerOutput` schema at the model-call boundary — not just after parsing.
 
-**Context**: Spec says PydanticAI should enforce schema at the model-call boundary, not just after parsing.
+**Implementation** (`src/agents/planner_agent.py`):
+- `pydantic_ai.Agent` is initialised lazily with `GoogleModel(LLM_MODEL, provider=GoogleProvider(api_key=...))`.
+- It is used as a validation/parsing step: the raw CrewAI output is fed to PydanticAI's `agent.run()`, which returns a typed `PlannerOutput` directly.
+- Async `agent.run()` is bridged to sync context via `ThreadPoolExecutor` (safe for both Gradio's event loop and plain sync contexts).
+- Keyword fallback remains as last resort if PydanticAI fails.
+
+**Why amended**: The original D-006 noted PydanticAI models as schemas only. This is upgraded: PydanticAI now also provides the typed agent runtime for the Planner, satisfying the spec requirement for genuine `Agent[Deps, OutputType]` usage.
+
+---
+
+## D-008: CrewAI execution — Task + Crew.kickoff() (NEW)
+
+**Problem**: The original build defined `make_planner_crewai_agent()`, `make_information_crewai_agent()`, and `make_validation_crewai_agent()` but never wrapped them in `Task` or `Crew` — the pipeline bypassed CrewAI and called raw LangChain chains directly. This meant CrewAI was "defined but not executed."
+
+**Decision**: All three agents now execute through `Crew(agents=[agent], tasks=[task]).kickoff()`:
+- Each `CrewAI Agent` is given its `llm=get_llm(...)` parameter explicitly (same Gemini model used everywhere, via `src/config.py`).
+- Each has a corresponding `Task(description=..., expected_output=..., agent=agent)` built from the existing prompt templates.
+- `Crew.kickoff()` returns a `CrewOutput`; `.raw` is extracted as a string for downstream parsing.
+- The pipeline signatures (`run_planner`, `run_information_agent`, `run_validation_agent`) are unchanged — `workflow.py` required no modification.
+
+**Planner specifics**: CrewAI produces the raw classification text → PydanticAI validates it into `PlannerOutput`. Two frameworks genuinely cooperate on the same step.
+
+**Context**: Spec Section 2 explicitly requires CrewAI for "agent roles" and states the three agents are "run as a pipeline." Section 8 evaluation checklist checks that "agents are modular." Having CrewAI defined but never executed failed this requirement.
 
 ---
 
 ## D-007: Retry-with-backoff for Gemini rate limits
 
-**Decision**: A `tenacity`-based retry decorator (or manual `time.sleep`) is wrapped around LLM calls to handle the free tier's requests-per-minute limit.
+**Decision**: A manual `time.sleep`-based retry decorator is wrapped around LLM calls to handle the free tier's requests-per-minute limit.
 
 **Context**: Spec section 9 explicitly warns about Gemini free-tier rate limits when multiple agents fire sequentially.

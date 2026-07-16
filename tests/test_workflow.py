@@ -179,6 +179,11 @@ class TestGraphNodes:
 
 
 class TestRetryLogic:
+    """
+    Tests for should_retry() conditional edge and increment_retry() node.
+    Note: retry_count is incremented by increment_retry node, not by should_retry.
+    should_retry only routes; increment_retry updates the counter.
+    """
 
     def test_should_retry_on_invalid_within_limit(self):
         from src.graph.workflow import should_retry
@@ -189,7 +194,8 @@ class TestRetryLogic:
         }
         decision = should_retry(state)
         assert decision == "retry"
-        assert state["retry_count"] == 1
+        # retry_count NOT mutated by should_retry — incremented by increment_retry node
+        assert state["retry_count"] == 0
 
     def test_should_end_on_valid(self):
         from src.graph.workflow import should_retry
@@ -210,13 +216,13 @@ class TestRetryLogic:
         }
         decision = should_retry(state)
         assert decision == "end"
-        assert state["final_answer"] == FALLBACK_MESSAGE
+        # fallback is set by run_workflow() post-processing, not by should_retry
 
     def test_max_retries_constant_is_2(self):
         assert MAX_RETRIES == 2
 
     def test_retry_increments_counter(self):
-        from src.graph.workflow import should_retry
+        from src.graph.workflow import should_retry, increment_retry
         state: GraphStateDict = {
             "query": "test",
             "is_valid": False,
@@ -224,9 +230,11 @@ class TestRetryLogic:
         }
         decision = should_retry(state)
         assert decision == "retry"
-        assert state["retry_count"] == 2
-        # One more invalid should now exhaust
-        state["is_valid"] = False
+        # Simulate increment_retry node execution
+        updates = increment_retry(state)
+        assert updates["retry_count"] == 2
+        # Now at max — should route to end
+        state["retry_count"] = 2
         decision2 = should_retry(state)
         assert decision2 == "end"
 
