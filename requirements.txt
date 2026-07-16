@@ -1,0 +1,11 @@
+crewai>=0.80.0
+langchain>=0.3.0
+langchain-google-genai>=2.0.0
+langgraph>=0.2.0
+pydantic-ai>=0.0.14
+docling>=2.0.0
+ag2>=0.3.0
+beeai-framework>=0.1.0
+gradio>=5.0.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0

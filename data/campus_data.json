@@ -1,0 +1,1203 @@
+{
+  "fees": [
+    {
+      "id": "fee-001",
+      "source": "mock",
+      "category": "fees",
+      "program": "B.Tech (Computer Science)",
+      "semester": "Semester 1",
+      "tuition_fee": 85000,
+      "hostel_fee": 42000,
+      "exam_fee": 2500,
+      "library_fee": 1500,
+      "total_per_semester": 131000,
+      "due_date": "2025-07-31",
+      "currency": "INR",
+      "notes": "Fee waiver available for students with family income below 3 LPA. Apply via student portal by June 30."
+    },
+    {
+      "id": "fee-002",
+      "source": "mock",
+      "category": "fees",
+      "program": "B.Tech (Electrical Engineering)",
+      "semester": "Semester 1",
+      "tuition_fee": 82000,
+      "hostel_fee": 42000,
+      "exam_fee": 2500,
+      "library_fee": 1500,
+      "total_per_semester": 128000,
+      "due_date": "2025-07-31",
+      "currency": "INR",
+      "notes": "Late fee of INR 500/day applies after the due date."
+    },
+    {
+      "id": "fee-003",
+      "source": "mock",
+      "category": "fees",
+      "program": "M.Tech (Data Science)",
+      "semester": "Semester 1",
+      "tuition_fee": 95000,
+      "hostel_fee": 45000,
+      "exam_fee": 3000,
+      "library_fee": 2000,
+      "total_per_semester": 145000,
+      "due_date": "2025-07-31",
+      "currency": "INR",
+      "notes": "Research stipend of INR 12,000/month available for qualified students."
+    },
+    {
+      "id": "fee-004",
+      "source": "mock",
+      "category": "fees",
+      "program": "MBA",
+      "semester": "Semester 1",
+      "tuition_fee": 120000,
+      "hostel_fee": 48000,
+      "exam_fee": 3500,
+      "library_fee": 2500,
+      "total_per_semester": 174000,
+      "due_date": "2025-07-31",
+      "currency": "INR",
+      "notes": "Industry tie-up scholarship available for working professionals."
+    },
+    {
+      "id": "fee-005",
+      "source": "mock",
+      "category": "fees",
+      "program": "B.Sc (Physics)",
+      "semester": "Semester 1",
+      "tuition_fee": 35000,
+      "hostel_fee": 38000,
+      "exam_fee": 1500,
+      "library_fee": 1000,
+      "total_per_semester": 75500,
+      "due_date": "2025-07-31",
+      "currency": "INR",
+      "notes": "Sports quota students get 10% discount on tuition fee."
+    },
+    {
+      "id": "fee-006",
+      "source": "mock",
+      "category": "fees",
+      "program": "All Programs",
+      "semester": "All",
+      "tuition_fee": null,
+      "hostel_fee": null,
+      "exam_fee": null,
+      "library_fee": null,
+      "total_per_semester": null,
+      "due_date": null,
+      "currency": "INR",
+      "notes": "Fee payment accepted via NEFT/RTGS to Account No. 1234567890, IFSC: CAMP0001234. Online portal: fees.campusai.edu.in"
+    },
+    {
+      "id": "docling-fee-odd-semester-2025",
+      "source": "docling_pdf",
+      "category": "fees",
+      "extracted_from": "Academic Calendar PDF — Fee Payment Schedule",
+      "description": "Odd Semester 2025",
+      "deadline": "31-Jul-2025",
+      "late_fee": "INR 500/day after deadline",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-fee-even-semester-2026",
+      "source": "docling_pdf",
+      "category": "fees",
+      "extracted_from": "Academic Calendar PDF — Fee Payment Schedule",
+      "description": "Even Semester 2026",
+      "deadline": "20-Jan-2026",
+      "late_fee": "INR 500/day after deadline",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-fee-supplementary-exam-registratio",
+      "source": "docling_pdf",
+      "category": "fees",
+      "extracted_from": "Academic Calendar PDF — Fee Payment Schedule",
+      "description": "Supplementary Exam Registration (Even Sem)",
+      "deadline": "20-Dec-2025",
+      "late_fee": "INR 500 per subject",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    }
+  ],
+  "timetable": [
+    {
+      "id": "tt-001",
+      "source": "mock",
+      "category": "timetable",
+      "department": "Computer Science",
+      "year": 2,
+      "semester": 3,
+      "day": "Monday",
+      "schedule": [
+        {
+          "time": "09:00-10:00",
+          "subject": "Data Structures",
+          "faculty": "Dr. Priya Sharma",
+          "room": "CS-201"
+        },
+        {
+          "time": "10:00-11:00",
+          "subject": "Discrete Mathematics",
+          "faculty": "Prof. Anil Gupta",
+          "room": "CS-202"
+        },
+        {
+          "time": "11:15-12:15",
+          "subject": "Operating Systems",
+          "faculty": "Dr. Rahul Verma",
+          "room": "CS-203"
+        },
+        {
+          "time": "14:00-17:00",
+          "subject": "Data Structures Lab",
+          "faculty": "Dr. Priya Sharma",
+          "room": "CS-Lab1"
+        }
+      ]
+    },
+    {
+      "id": "tt-002",
+      "source": "mock",
+      "category": "timetable",
+      "department": "Computer Science",
+      "year": 2,
+      "semester": 3,
+      "day": "Tuesday",
+      "schedule": [
+        {
+          "time": "09:00-10:00",
+          "subject": "Computer Networks",
+          "faculty": "Prof. Sunita Rao",
+          "room": "CS-201"
+        },
+        {
+          "time": "10:00-11:00",
+          "subject": "Data Structures",
+          "faculty": "Dr. Priya Sharma",
+          "room": "CS-201"
+        },
+        {
+          "time": "11:15-12:15",
+          "subject": "Discrete Mathematics",
+          "faculty": "Prof. Anil Gupta",
+          "room": "CS-202"
+        },
+        {
+          "time": "14:00-15:00",
+          "subject": "Technical Communication",
+          "faculty": "Ms. Deepa Nair",
+          "room": "LH-101"
+        }
+      ]
+    },
+    {
+      "id": "tt-003",
+      "source": "mock",
+      "category": "timetable",
+      "department": "Electrical Engineering",
+      "year": 2,
+      "semester": 3,
+      "day": "Monday",
+      "schedule": [
+        {
+          "time": "09:00-10:00",
+          "subject": "Circuit Theory",
+          "faculty": "Dr. Mohan Das",
+          "room": "EE-101"
+        },
+        {
+          "time": "10:00-11:00",
+          "subject": "Signals & Systems",
+          "faculty": "Prof. Kavita Joshi",
+          "room": "EE-102"
+        },
+        {
+          "time": "11:15-12:15",
+          "subject": "Engineering Mathematics III",
+          "faculty": "Dr. Suresh Pillai",
+          "room": "MA-201"
+        },
+        {
+          "time": "14:00-17:00",
+          "subject": "Circuits Lab",
+          "faculty": "Dr. Mohan Das",
+          "room": "EE-Lab1"
+        }
+      ]
+    },
+    {
+      "id": "tt-004",
+      "source": "mock",
+      "category": "timetable",
+      "department": "Computer Science",
+      "year": 3,
+      "semester": 5,
+      "day": "Wednesday",
+      "schedule": [
+        {
+          "time": "09:00-10:00",
+          "subject": "Machine Learning",
+          "faculty": "Dr. Ananya Singh",
+          "room": "CS-301"
+        },
+        {
+          "time": "10:00-11:00",
+          "subject": "Database Management Systems",
+          "faculty": "Prof. Anil Gupta",
+          "room": "CS-302"
+        },
+        {
+          "time": "11:15-12:15",
+          "subject": "Software Engineering",
+          "faculty": "Dr. Rahul Verma",
+          "room": "CS-303"
+        },
+        {
+          "time": "14:00-17:00",
+          "subject": "ML Lab",
+          "faculty": "Dr. Ananya Singh",
+          "room": "CS-Lab2"
+        }
+      ]
+    },
+    {
+      "id": "tt-005",
+      "source": "mock",
+      "category": "timetable",
+      "department": "MBA",
+      "year": 1,
+      "semester": 1,
+      "day": "Monday",
+      "schedule": [
+        {
+          "time": "09:00-10:30",
+          "subject": "Management Principles",
+          "faculty": "Prof. Vikram Mehta",
+          "room": "MB-101"
+        },
+        {
+          "time": "10:45-12:15",
+          "subject": "Financial Accounting",
+          "faculty": "Dr. Lata Krishnan",
+          "room": "MB-102"
+        },
+        {
+          "time": "14:00-15:30",
+          "subject": "Organizational Behaviour",
+          "faculty": "Dr. Priya Iyer",
+          "room": "MB-101"
+        }
+      ]
+    }
+  ],
+  "exam": [
+    {
+      "id": "exam-001",
+      "source": "mock",
+      "category": "exam",
+      "exam_type": "End Semester Examination",
+      "semester": "Odd Semester 2025",
+      "start_date": "2025-11-10",
+      "end_date": "2025-11-28",
+      "department": "Computer Science",
+      "subjects": [
+        {
+          "date": "2025-11-10",
+          "day": "Monday",
+          "subject": "Data Structures",
+          "time": "10:00-13:00",
+          "room": "Exam Hall A"
+        },
+        {
+          "date": "2025-11-13",
+          "day": "Thursday",
+          "subject": "Operating Systems",
+          "time": "10:00-13:00",
+          "room": "Exam Hall A"
+        },
+        {
+          "date": "2025-11-17",
+          "day": "Monday",
+          "subject": "Discrete Mathematics",
+          "time": "10:00-13:00",
+          "room": "Exam Hall B"
+        },
+        {
+          "date": "2025-11-20",
+          "day": "Thursday",
+          "subject": "Computer Networks",
+          "time": "10:00-13:00",
+          "room": "Exam Hall A"
+        },
+        {
+          "date": "2025-11-24",
+          "day": "Monday",
+          "subject": "Technical Communication",
+          "time": "14:00-17:00",
+          "room": "LH-201"
+        }
+      ]
+    },
+    {
+      "id": "exam-002",
+      "source": "mock",
+      "category": "exam",
+      "exam_type": "Mid Semester Examination",
+      "semester": "Odd Semester 2025",
+      "start_date": "2025-09-15",
+      "end_date": "2025-09-22",
+      "department": "All Departments",
+      "notes": "Mid-semester exams are held in the respective classrooms. No special exam halls allocated.",
+      "duration": "1.5 hours",
+      "time": "10:00-11:30"
+    },
+    {
+      "id": "exam-003",
+      "source": "mock",
+      "category": "exam",
+      "exam_type": "Supplementary Examination",
+      "semester": "Even Semester 2025",
+      "start_date": "2025-07-07",
+      "end_date": "2025-07-18",
+      "department": "All Departments",
+      "notes": "Students with ATKT must register via the student portal by June 20. Fee: INR 500 per subject.",
+      "time": "14:00-17:00"
+    },
+    {
+      "id": "exam-004",
+      "source": "mock",
+      "category": "exam",
+      "exam_type": "Practical Examination",
+      "semester": "Odd Semester 2025",
+      "start_date": "2025-11-28",
+      "end_date": "2025-12-05",
+      "department": "All Departments",
+      "notes": "Practical examination schedule will be announced by respective department coordinators.",
+      "duration": "3 hours"
+    },
+    {
+      "id": "exam-005",
+      "source": "mock",
+      "category": "exam",
+      "exam_type": "Result Declaration",
+      "semester": "Even Semester 2025",
+      "date": "2025-08-15",
+      "department": "All Departments",
+      "notes": "Results published on student portal at erp.campusai.edu.in. Revaluation requests accepted within 7 days of result declaration."
+    },
+    {
+      "id": "docling-odd-semester-begins",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Semester Begins",
+      "date": "01-Jul-2025",
+      "notes": "Orientation for first-year students: 01-02 Jul",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-last-date-for-course-registrat",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Last date for course registration",
+      "date": "07-Jul-2025",
+      "notes": "Late registration fee: INR 200/day",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-mid-semester-examination",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Mid-Semester Examination",
+      "date": "15-Sep-2025 to 22-Sep-2025",
+      "notes": "In respective classrooms; 1.5 hrs duration",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-mid-semester-result-declaratio",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Mid-semester result declaration",
+      "date": "29-Sep-2025",
+      "notes": "Accessible on ERP portal",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-last-teaching-day",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Last teaching day",
+      "date": "31-Oct-2025",
+      "notes": "Study leave: 01-Nov to 09-Nov",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-end-semester-examination-begin",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "End-Semester Examination begins",
+      "date": "10-Nov-2025",
+      "notes": "As per detailed schedule issued by Exam Cell",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-end-semester-examination-ends",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "End-Semester Examination ends",
+      "date": "28-Nov-2025",
+      "notes": "",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-practical-examinations",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Practical Examinations",
+      "date": "28-Nov-2025 to 05-Dec-2025",
+      "notes": "Schedule by department coordinators",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-result-declaration--odd-sem-",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Result Declaration (Odd Sem)",
+      "date": "27-Dec-2025",
+      "notes": "Revaluation: within 7 days",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-odd-winter-break",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Odd Semester",
+      "event": "Winter Break",
+      "date": "06-Dec-2025 to 02-Jan-2026",
+      "notes": "Campus closed 25-Dec to 01-Jan",
+      "semester": "Odd Semester 2025",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-semester-begins",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Semester Begins",
+      "date": "03-Jan-2026",
+      "notes": "",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-last-date-for-course-registrat",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Last date for course registration",
+      "date": "09-Jan-2026",
+      "notes": "Late registration fee: INR 200/day",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-mid-semester-examination",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Mid-Semester Examination",
+      "date": "02-Mar-2026 to 09-Mar-2026",
+      "notes": "In respective classrooms; 1.5 hrs duration",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-mid-semester-result-declaratio",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Mid-semester result declaration",
+      "date": "16-Mar-2026",
+      "notes": "Accessible on ERP portal",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-last-teaching-day",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Last teaching day",
+      "date": "24-Apr-2026",
+      "notes": "Study leave: 25-Apr to 04-May",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-end-semester-examination-begin",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "End-Semester Examination begins",
+      "date": "05-May-2026",
+      "notes": "As per detailed schedule issued by Exam Cell",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-end-semester-examination-ends",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "End-Semester Examination ends",
+      "date": "22-May-2026",
+      "notes": "",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-practical-examinations",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Practical Examinations",
+      "date": "22-May-2026 to 29-May-2026",
+      "notes": "Schedule by department coordinators",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-result-declaration--even-sem-",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Result Declaration (Even Sem)",
+      "date": "20-Jun-2026",
+      "notes": "Revaluation: within 7 days",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    },
+    {
+      "id": "docling-even-summer-break",
+      "source": "docling_pdf",
+      "category": "exam",
+      "extracted_from": "Academic Calendar PDF — Even Semester",
+      "event": "Summer Break",
+      "date": "30-May-2026 to 30-Jun-2026",
+      "notes": "Summer term (optional) runs in June",
+      "semester": "Even Semester 2026",
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    }
+  ],
+  "faculty": [
+    {
+      "id": "fac-001",
+      "source": "mock",
+      "category": "faculty",
+      "name": "Dr. Priya Sharma",
+      "designation": "Associate Professor",
+      "department": "Computer Science",
+      "subjects": [
+        "Data Structures",
+        "Algorithms",
+        "Python Programming"
+      ],
+      "email": "priya.sharma@campusai.edu.in",
+      "phone": "ext. 2201",
+      "office": "CS Dept, Room 105",
+      "office_hours": "Monday & Wednesday, 14:00-16:00",
+      "research_interests": [
+        "Machine Learning",
+        "Graph Algorithms",
+        "Bioinformatics"
+      ],
+      "qualifications": "Ph.D. (IIT Bombay), M.Tech (BITS Pilani)"
+    },
+    {
+      "id": "fac-002",
+      "source": "mock",
+      "category": "faculty",
+      "name": "Prof. Anil Gupta",
+      "designation": "Professor & HOD",
+      "department": "Computer Science",
+      "subjects": [
+        "Discrete Mathematics",
+        "Theory of Computation",
+        "Database Management Systems"
+      ],
+      "email": "anil.gupta@campusai.edu.in",
+      "phone": "ext. 2200",
+      "office": "CS Dept, HOD Office",
+      "office_hours": "Tuesday & Thursday, 11:00-13:00",
+      "research_interests": [
+        "Formal Methods",
+        "Distributed Systems"
+      ],
+      "qualifications": "Ph.D. (IISc Bangalore)"
+    },
+    {
+      "id": "fac-003",
+      "source": "mock",
+      "category": "faculty",
+      "name": "Dr. Rahul Verma",
+      "designation": "Assistant Professor",
+      "department": "Computer Science",
+      "subjects": [
+        "Operating Systems",
+        "Software Engineering",
+        "Cloud Computing"
+      ],
+      "email": "rahul.verma@campusai.edu.in",
+      "phone": "ext. 2205",
+      "office": "CS Dept, Room 108",
+      "office_hours": "Friday, 10:00-12:00",
+      "research_interests": [
+        "Cloud Architecture",
+        "Containerization",
+        "DevOps"
+      ],
+      "qualifications": "Ph.D. (NIT Trichy), M.Tech (NIT Surathkal)"
+    },
+    {
+      "id": "fac-004",
+      "source": "mock",
+      "category": "faculty",
+      "name": "Dr. Ananya Singh",
+      "designation": "Associate Professor",
+      "department": "Computer Science",
+      "subjects": [
+        "Machine Learning",
+        "Deep Learning",
+        "Data Mining"
+      ],
+      "email": "ananya.singh@campusai.edu.in",
+      "phone": "ext. 2210",
+      "office": "CS Dept, Room 112",
+      "office_hours": "Monday, Wednesday & Friday, 15:00-16:00",
+      "research_interests": [
+        "Computer Vision",
+        "NLP",
+        "Federated Learning"
+      ],
+      "qualifications": "Ph.D. (IIT Delhi)"
+    },
+    {
+      "id": "fac-005",
+      "source": "mock",
+      "category": "faculty",
+      "name": "Prof. Sunita Rao",
+      "designation": "Professor",
+      "department": "Computer Science",
+      "subjects": [
+        "Computer Networks",
+        "Cybersecurity",
+        "Network Programming"
+      ],
+      "email": "sunita.rao@campusai.edu.in",
+      "phone": "ext. 2215",
+      "office": "CS Dept, Room 115",
+      "office_hours": "Tuesday & Thursday, 14:00-16:00",
+      "research_interests": [
+        "Network Security",
+        "IoT Security",
+        "Intrusion Detection"
+      ],
+      "qualifications": "Ph.D. (IIT Madras), B.E. (VJTI Mumbai)"
+    },
+    {
+      "id": "fac-006",
+      "source": "mock",
+      "category": "faculty",
+      "name": "Dr. Mohan Das",
+      "designation": "Associate Professor",
+      "department": "Electrical Engineering",
+      "subjects": [
+        "Circuit Theory",
+        "Power Electronics",
+        "Control Systems"
+      ],
+      "email": "mohan.das@campusai.edu.in",
+      "phone": "ext. 3101",
+      "office": "EE Dept, Room 201",
+      "office_hours": "Monday & Thursday, 10:00-12:00",
+      "research_interests": [
+        "Smart Grid",
+        "Power Systems",
+        "Renewable Energy"
+      ],
+      "qualifications": "Ph.D. (IIT Kharagpur)"
+    }
+  ],
+  "library": [
+    {
+      "id": "lib-001",
+      "source": "mock",
+      "category": "library",
+      "name": "Central Library",
+      "location": "Main Campus, Building G",
+      "timings": {
+        "weekdays": "08:00-22:00",
+        "saturday": "09:00-20:00",
+        "sunday": "10:00-18:00",
+        "exam_season": "Open 24 hours (Ground Floor Reading Room)"
+      },
+      "contact": "library@campusai.edu.in | ext. 1001",
+      "total_books": 85000,
+      "e_resources": "Access to IEEE Xplore, Springer, Elsevier, JSTOR, ACM Digital Library",
+      "rules": [
+        "Valid student ID mandatory for entry",
+        "Food and beverages not allowed",
+        "Mobile phones must be on silent mode",
+        "Silence to be maintained in the reading hall"
+      ]
+    },
+    {
+      "id": "lib-002",
+      "source": "mock",
+      "category": "library",
+      "name": "Book Borrowing Rules",
+      "applicable_to": "All students",
+      "ug_books": 4,
+      "pg_books": 6,
+      "phd_books": 10,
+      "loan_period_days": 14,
+      "renewal": "One renewal of 7 days allowed if book is not reserved",
+      "fine_per_day": 5,
+      "fine_currency": "INR",
+      "lost_book_fine": "Cost of book + INR 200 processing fee"
+    },
+    {
+      "id": "lib-003",
+      "source": "mock",
+      "category": "library",
+      "name": "Digital Library / E-Resources",
+      "access": "24/7 via library portal: library.campusai.edu.in",
+      "databases": [
+        "IEEE Xplore",
+        "ACM Digital Library",
+        "Springer Link",
+        "Elsevier ScienceDirect",
+        "JSTOR",
+        "NPTEL Video Lectures"
+      ],
+      "vpn_required": true,
+      "vpn_instructions": "Download university VPN client from IT helpdesk portal. Login with student credentials.",
+      "notes": "Off-campus access requires VPN. Contact library helpdesk for access issues."
+    },
+    {
+      "id": "lib-004",
+      "source": "mock",
+      "category": "library",
+      "name": "Reference Section",
+      "location": "First Floor, Central Library",
+      "items": "Encyclopaedias, dictionaries, project reports, theses",
+      "lending": "Not available for home loan — in-library use only",
+      "photocopying": "Allowed for academic purposes. Cost: INR 1 per page. Operator available 09:00-17:00 weekdays."
+    },
+    {
+      "id": "lib-005",
+      "source": "mock",
+      "category": "library",
+      "name": "Departmental Libraries",
+      "departments": [
+        "Computer Science",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "MBA"
+      ],
+      "timings": "Monday-Friday, 09:00-17:00",
+      "books_available": "Core textbooks and reference books for respective department courses",
+      "contact": "Contact respective department office for access"
+    }
+  ],
+  "hostel": [
+    {
+      "id": "hos-001",
+      "source": "mock",
+      "category": "hostel",
+      "name": "Boys Hostel A (Ganga Bhawan)",
+      "capacity": 320,
+      "rooms": "Single and Double occupancy",
+      "rent_single": 42000,
+      "rent_double": 28000,
+      "rent_period": "per semester",
+      "currency": "INR",
+      "facilities": [
+        "24x7 hot water",
+        "Wi-Fi",
+        "Common room with TV",
+        "Study room",
+        "Gym (basic)",
+        "Laundry room"
+      ],
+      "warden": "Mr. Santosh Kumar | ext. 4001",
+      "rules": {
+        "curfew": "22:00 on weekdays, 23:00 on weekends",
+        "guests": "Visitors allowed in common room only, 08:00-20:00",
+        "no_cooking": "Cooking in rooms strictly prohibited"
+      }
+    },
+    {
+      "id": "hos-002",
+      "source": "mock",
+      "category": "hostel",
+      "name": "Girls Hostel (Yamuna Bhawan)",
+      "capacity": 280,
+      "rooms": "Single and Double occupancy",
+      "rent_single": 44000,
+      "rent_double": 30000,
+      "rent_period": "per semester",
+      "currency": "INR",
+      "facilities": [
+        "24x7 hot water",
+        "Wi-Fi",
+        "Common room with TV",
+        "Study room",
+        "Indoor games",
+        "Beauty parlour (once a week)"
+      ],
+      "warden": "Ms. Rekha Pillai | ext. 4010",
+      "rules": {
+        "curfew": "21:00 on weekdays, 22:00 on weekends",
+        "guests": "Female visitors only, 08:00-20:00",
+        "security": "Night security guard on duty 21:00-07:00"
+      }
+    },
+    {
+      "id": "hos-003",
+      "source": "mock",
+      "category": "hostel",
+      "name": "Hostel Mess",
+      "type": "Centralised mess for all hostels",
+      "timings": {
+        "breakfast": "07:00-09:00",
+        "lunch": "12:00-14:00",
+        "snacks": "17:00-18:00",
+        "dinner": "19:30-21:30"
+      },
+      "mess_fee": 18000,
+      "mess_fee_period": "per semester",
+      "menu": "Weekly rotating menu available on hostel notice board and WhatsApp group",
+      "special_diet": "Jain and diabetic diet options available on prior request to mess committee"
+    },
+    {
+      "id": "hos-004",
+      "source": "mock",
+      "category": "hostel",
+      "name": "Hostel Allotment Process",
+      "eligibility": "All outstation students. Local day-scholars not eligible.",
+      "allotment": "First-come-first-served based on admission date. Apply within 7 days of admission.",
+      "portal": "hostel.campusai.edu.in",
+      "documents_required": [
+        "Admission letter",
+        "Student ID",
+        "Parent ID proof",
+        "Medical fitness certificate"
+      ],
+      "notes": "Hostel is mandatory for first-year B.Tech students from outside 100km radius."
+    },
+    {
+      "id": "hos-005",
+      "source": "mock",
+      "category": "hostel",
+      "name": "Hostel Wi-Fi Policy",
+      "provider": "University IT Department",
+      "speed": "100 Mbps shared (approx. 2-3 Mbps per device)",
+      "data_limit": "50 GB per month per student",
+      "login": "Use student ID and portal password",
+      "blocked_sites": "Torrents, gambling, and streaming beyond 23:00-06:00",
+      "helpdesk": "ithelpdesk@campusai.edu.in | ext. 5001"
+    }
+  ],
+  "canteen": [
+    {
+      "id": "can-001",
+      "source": "mock",
+      "category": "canteen",
+      "name": "Main Canteen (Food Court)",
+      "location": "Central Campus, Near Admin Block",
+      "timings": "Monday-Saturday: 07:30-21:00 | Sunday: 09:00-18:00",
+      "stalls": [
+        {
+          "name": "South Indian Corner",
+          "items": [
+            "Idli",
+            "Dosa",
+            "Vada",
+            "Sambhar Rice"
+          ],
+          "avg_price": 40
+        },
+        {
+          "name": "North Indian Dhaba",
+          "items": [
+            "Roti",
+            "Dal",
+            "Paneer dishes",
+            "Rajma Rice"
+          ],
+          "avg_price": 60
+        },
+        {
+          "name": "Chinese Stall",
+          "items": [
+            "Noodles",
+            "Fried Rice",
+            "Manchurian"
+          ],
+          "avg_price": 70
+        },
+        {
+          "name": "Juice & Snacks",
+          "items": [
+            "Fresh juices",
+            "Sandwiches",
+            "Samosa",
+            "Tea/Coffee"
+          ],
+          "avg_price": 30
+        },
+        {
+          "name": "Burger Zone",
+          "items": [
+            "Veg & Non-veg burgers",
+            "Fries",
+            "Cold drinks"
+          ],
+          "avg_price": 80
+        }
+      ],
+      "payment": "UPI, card, and canteen smart card (10% discount on smart card)"
+    },
+    {
+      "id": "can-002",
+      "source": "mock",
+      "category": "canteen",
+      "name": "Engineering Block Cafeteria",
+      "location": "Engineering Block, Ground Floor",
+      "timings": "Monday-Friday: 08:00-18:00",
+      "items": [
+        "Tea",
+        "Coffee",
+        "Cold beverages",
+        "Biscuits",
+        "Pastries",
+        "Quick snacks"
+      ],
+      "notes": "Quick-service café for between-class breaks. No hot meals."
+    },
+    {
+      "id": "can-003",
+      "source": "mock",
+      "category": "canteen",
+      "name": "Canteen Smart Card",
+      "benefit": "10% discount on all purchases at Main Canteen",
+      "minimum_load": 200,
+      "maximum_balance": 5000,
+      "currency": "INR",
+      "how_to_get": "Apply at Student Services Counter with student ID. Card issued within 2 working days.",
+      "recharge": "Online via student portal or at canteen counter"
+    },
+    {
+      "id": "can-004",
+      "source": "mock",
+      "category": "canteen",
+      "name": "Canteen Complaint / Feedback",
+      "contact": "canteen.committee@campusai.edu.in",
+      "feedback_box": "Located at the entrance of the Main Canteen",
+      "student_rep": "Each department has a canteen committee student representative. Contact your department office.",
+      "notes": "Monthly canteen committee meeting held on the last Friday of every month."
+    },
+    {
+      "id": "can-005",
+      "source": "mock",
+      "category": "canteen",
+      "name": "Late Night Snack Stall",
+      "location": "Near Boys Hostel A",
+      "timings": "20:00-24:00 (all days)",
+      "items": [
+        "Maggi",
+        "Bread omelette",
+        "Tea",
+        "Coffee",
+        "Chips",
+        "Cold drinks"
+      ],
+      "notes": "Operated by hostel mess contractor. Accepts cash and UPI only."
+    }
+  ],
+  "general": [
+    {
+      "id": "gen-001",
+      "source": "mock",
+      "category": "general",
+      "topic": "Academic Calendar Overview",
+      "odd_semester": "July – November",
+      "even_semester": "January – May",
+      "summer_term": "June (optional, for backlog clearance)",
+      "registration_deadline": "Within 7 days of semester start",
+      "notes": "Full academic calendar available on the university website: www.campusai.edu.in/academic-calendar"
+    },
+    {
+      "id": "gen-002",
+      "source": "mock",
+      "category": "general",
+      "topic": "Student Services",
+      "services": [
+        {
+          "name": "Student ID Card",
+          "office": "Registrar's Office, Admin Block",
+          "contact": "registrar@campusai.edu.in"
+        },
+        {
+          "name": "Transcripts",
+          "office": "Examination Section",
+          "contact": "examcell@campusai.edu.in"
+        },
+        {
+          "name": "Bonafide Certificate",
+          "office": "Student Affairs Office",
+          "contact": "studentaffairs@campusai.edu.in"
+        },
+        {
+          "name": "Migration Certificate",
+          "office": "Registrar's Office",
+          "contact": "registrar@campusai.edu.in"
+        },
+        {
+          "name": "Fee Receipt",
+          "office": "Accounts Department",
+          "contact": "accounts@campusai.edu.in"
+        }
+      ]
+    },
+    {
+      "id": "gen-003",
+      "source": "mock",
+      "category": "general",
+      "topic": "Attendance Policy",
+      "minimum_attendance": "75%",
+      "condonation": "Up to 10% may be condoned by HOD on medical/valid grounds",
+      "detention": "Students below 65% attendance will be detained from end-semester exam",
+      "tracking": "Attendance marked digitally via faculty portal; accessible to students on ERP",
+      "notes": "Medical leave must be submitted with doctor's certificate within 3 days of return."
+    },
+    {
+      "id": "gen-004",
+      "source": "mock",
+      "category": "general",
+      "topic": "Anti-Ragging Policy",
+      "status": "Zero tolerance. CampusAI University is a ragging-free campus.",
+      "helpline": "1800-180-5522 (national helpline) | anti.ragging@campusai.edu.in",
+      "action": "Immediate suspension and FIR in case of confirmed ragging incident",
+      "committee": "Anti-Ragging Committee meets monthly. Student members elected from each batch."
+    },
+    {
+      "id": "gen-005",
+      "source": "mock",
+      "category": "general",
+      "topic": "IT and Wi-Fi Services",
+      "campus_wifi": "Available across all buildings including hostels",
+      "ssid": "CampusAI_WiFi",
+      "login": "Student ID + ERP portal password",
+      "helpdesk": "ithelpdesk@campusai.edu.in | ext. 5001 | IT Block, Room 01",
+      "timings": "Monday-Friday: 09:00-17:00 (emergencies: ext. 5000, 24x7)",
+      "software": "Licensed Microsoft Office, AutoCAD, MATLAB available for free download via student portal"
+    },
+    {
+      "id": "gen-006",
+      "source": "mock",
+      "category": "general",
+      "topic": "Placement Cell",
+      "office": "Training & Placement Office, Admin Block, First Floor",
+      "contact": "placement@campusai.edu.in | ext. 1100",
+      "eligibility": "CGPA ≥ 6.0, no active backlog at time of placement drive",
+      "recent_recruiters": [
+        "TCS",
+        "Infosys",
+        "Wipro",
+        "Amazon",
+        "Microsoft",
+        "Deloitte",
+        "ICICI Bank"
+      ],
+      "avg_package_btech": "6.5 LPA",
+      "highest_package_btech": "28 LPA",
+      "timings": "Monday-Friday: 10:00-17:00"
+    },
+    {
+      "id": "docling-holidays-2025-26",
+      "source": "docling_pdf",
+      "category": "general",
+      "extracted_from": "Academic Calendar PDF — Public Holidays",
+      "topic": "Public Holidays & Campus Closed Days 2025-2026",
+      "holidays": [
+        {
+          "date": "15-Aug-2025",
+          "day": "Friday",
+          "holiday": "Independence Day"
+        },
+        {
+          "date": "02-Oct-2025",
+          "day": "Thursday",
+          "holiday": "Gandhi Jayanti"
+        },
+        {
+          "date": "02-Nov-2025",
+          "day": "Sunday",
+          "holiday": "Diwali"
+        },
+        {
+          "date": "25-Dec-2025",
+          "day": "Thursday",
+          "holiday": "Christmas"
+        },
+        {
+          "date": "01-Jan-2026",
+          "day": "Thursday",
+          "holiday": "New Year"
+        },
+        {
+          "date": "26-Jan-2026",
+          "day": "Monday",
+          "holiday": "Republic Day"
+        },
+        {
+          "date": "14-Mar-2026",
+          "day": "Saturday",
+          "holiday": "Holi"
+        },
+        {
+          "date": "14-Apr-2026",
+          "day": "Tuesday",
+          "holiday": "Dr. Ambedkar Jayanti"
+        },
+        {
+          "date": "01-May-2026",
+          "day": "Friday",
+          "holiday": "Maharashtra Day / Labour Day"
+        }
+      ],
+      "parsed_at": "2026-07-16T12:19:18.846888"
+    }
+  ]
+}

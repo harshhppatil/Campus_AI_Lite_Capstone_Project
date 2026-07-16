@@ -1,0 +1,67 @@
+@"
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+
+# ── Virtual environments ────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Environment / secrets ───────────────────────────────────────────────────
+.env
+!.env.example
+
+# ── Distribution / packaging ────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+
+# ── Test & coverage ─────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ── IDEs & editors ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# ── Jupyter ─────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Logs ────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Docling ML model cache (large, downloaded at runtime) ───────────────────
+.docling/
+.cache/
+*.bin
+*.safetensors
+*.onnx
+*.pt
+*.pth
+
+# ── Generated PDF (reproducible via create_sample_pdf.py) ───────────────────
+data/source_pdfs/academic_calendar_2025_26.pdf
+
+# ── Docling intermediate output (reproducible via docling_ingest.py) ────────
+data/docling_output/
+
+# ── Smoke test helper ────────────────────────────────────────────────────────
+test_smoke.py
+
+# ── LangChain / LangSmith tracing ────────────────────────────────────────────
+.langchain/
+
+# ── Gradio temp files ────────────────────────────────────────────────────────
+gradio_cached_examples/
+flagged/
+"@ | Set-Content .gitignore -Encoding UTF8
